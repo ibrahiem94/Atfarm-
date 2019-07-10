@@ -43,6 +43,7 @@ public class CacheConfiguration {
             createCache(cm, com.atfarm.challenge.domain.User.class.getName());
             createCache(cm, com.atfarm.challenge.domain.Authority.class.getName());
             createCache(cm, com.atfarm.challenge.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.atfarm.challenge.domain.FieldCondition.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

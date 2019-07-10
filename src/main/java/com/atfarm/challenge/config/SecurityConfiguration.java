@@ -1,10 +1,8 @@
 package com.atfarm.challenge.config;
 
-import com.atfarm.challenge.security.*;
-import com.atfarm.challenge.security.jwt.*;
-
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
+import com.atfarm.challenge.security.AuthoritiesConstants;
+import com.atfarm.challenge.security.jwt.JWTConfigurer;
+import com.atfarm.challenge.security.jwt.TokenProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
@@ -48,7 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers(HttpMethod.OPTIONS, "/**")
             .antMatchers("/h2-console/**")
             .antMatchers("/swagger-ui/index.html")
-            .antMatchers("/test/**");
+            .antMatchers("/test/**")
+            .antMatchers("/api/v*/field-*");
     }
 
     @Override

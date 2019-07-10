@@ -1,0 +1,19 @@
+package com.atfarm.challenge.repository;
+
+import com.atfarm.challenge.domain.FieldCondition;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.sql.Date;
+import java.util.List;
+
+
+/**
+ * Spring Data  repository for the FieldCondition entity.
+ */
+@Repository
+public interface FieldConditionRepository extends JpaRepository<FieldCondition, Long> {
+
+	List<FieldCondition> findAllByOccurrenceAtLessThanEqualAndOccurrenceAtGreaterThanEqual(Date endDate, Date startDate);
+
+}
