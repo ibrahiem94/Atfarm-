@@ -57,16 +57,16 @@ public class FieldCondition implements Serializable {
 	}
 
 	public Date getOccurrenceAt() {
-		return (Date) Date.from(occurrenceAt);
+		return new Date(occurrenceAt.getEpochSecond());
 	}
 
 	public FieldCondition occurrenceAt(Date occurrenceAt) {
-		this.occurrenceAt = occurrenceAt.toInstant();
+		this.occurrenceAt = Instant.ofEpochMilli(occurrenceAt.getTime());
 		return this;
 	}
 
 	public void setOccurrenceAt(Date occurrenceAt) {
-		this.occurrenceAt = occurrenceAt.toInstant();
+		this.occurrenceAt = Instant.ofEpochMilli(occurrenceAt.getTime());
 	}
 	// jhipster-needle-entity-add-getters-setters - JHipster will add getters and
 	// setters here, do not remove

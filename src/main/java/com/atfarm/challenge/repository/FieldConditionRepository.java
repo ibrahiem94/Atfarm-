@@ -4,7 +4,7 @@ import com.atfarm.challenge.domain.FieldCondition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 
 
@@ -14,6 +14,6 @@ import java.util.List;
 @Repository
 public interface FieldConditionRepository extends JpaRepository<FieldCondition, Long> {
 
-	List<FieldCondition> findAllByOccurrenceAtLessThanEqualAndOccurrenceAtGreaterThanEqual(Date endDate, Date startDate);
+    List<FieldCondition> findAllByOccurrenceAtLessThanEqualAndOccurrenceAtGreaterThanEqual(Instant endDate, Instant startDate);
 
 }

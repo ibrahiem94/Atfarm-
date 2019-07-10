@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
+import java.time.Instant;
 import java.util.DoubleSummaryStatistics;
 
 /**
@@ -56,7 +57,7 @@ public class FieldServiceImpl implements FieldService {
 		log.debug("Request to get all FieldConditions between dates");
 		VegetationDTO vegetation = new VegetationDTO();
 		DoubleSummaryStatistics statistics = fieldConditionRepository
-				.findAllByOccurrenceAtLessThanEqualAndOccurrenceAtGreaterThanEqual(endDate, startDate).stream()
+				.findAllByOccurrenceAtLessThanEqualAndOccurrenceAtGreaterThanEqual(Instant.ofEpochMilli(endDate.getTime()), Instant.ofEpochMilli(startDate.getTime())).stream()
 				.mapToDouble(FieldCondition::getVegetation).summaryStatistics();
 
 		vegetation.setCount(statistics.getCount());
