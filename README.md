@@ -87,6 +87,47 @@ Then run:
 
 For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
 
+## Rest Api's End-points
+
+You Can call two versions of the rest apis to save fieldCondition :
+   
+    1- api/v1/* : For inMemory data storing and retriving with o(1) time and space complixity   
+    2- api/v2/* : For Database data storing and retriving used for history.
+To add new field condition you have to send POST
+    
+    1- /api/v1/field-conditions  (inMemory Stroing)
+    2- /api/v2/field-conditions  (db Stroing)
+with body 
+    
+    {
+        "vegetation" : 9.82,
+        "occurrenceAt" : "2019-07-20T08:50Z"
+    }
+To get Statistics you have to send GET
+    
+    1- ex : /api/v1/field-statistics   (calculated  from inMemory)
+    2- ex : /api/v2/field-statistics?startDate=2019-05-23T08:50Z&endDate=2019-06-23T08:50Z  (calculated  from Db)
+    - which includes the start and end dates to get statistics history from db. 
+sample response 
+
+    {
+      "vegetation": {
+        "count": 7,
+        "sum": 68.74,
+        "avg": 9.82,
+        "min": 9.82,
+        "max": 9.82
+      }
+    }
+you can access swager at :
+ 
+    /v2/api-docs
+you can access dev database if you run in development profile at :
+    
+    /h2-console
+
+
+
 ## Continuous Integration (optional)
 
 To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
