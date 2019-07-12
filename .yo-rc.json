@@ -30,6 +30,17 @@
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [],
-    "enableTranslation": false
+    "enableTranslation": false,
+    "appsFolders": [
+      "AtFarm Challenge"
+    ],
+    "directoryPath": "../",
+    "dockerRepositoryName": "ibrahiem94",
+    "dockerPushCommand": "docker push",
+    "kubernetesNamespace": "default",
+    "kubernetesServiceType": "LoadBalancer",
+    "ingressDomain": "",
+    "monitoring": "elk",
+    "istio": false
   }
 }
